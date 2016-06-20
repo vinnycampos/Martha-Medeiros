@@ -1,0 +1,51 @@
+//-------------------------------------
+// #COLORS
+//-------------------------------------
+
+$palette-base: (
+  'white'     : #ffffff,
+  'cloud'     : #f3f2ef,
+  'smoke'     : #bdc3c7,
+  'carbon'    : #3d4448
+);
+
+$palette-default: (
+  'primary'   : #003a5c,
+  'secondary' : #cbcbcb
+);
+
+$palette-events: (
+  'success'   : #2ecc71,
+  'warning'   : #f1c40f,
+  'alert'     : #e74c3c,
+  'info'      : #3498db
+);
+
+
+
+
+
+//-------------------------------------
+// #COLOR TONES
+//-------------------------------------
+
+$color-tone: (
+  'dark'    : 10%,
+  'xdark'   : 20%,
+  'xxdark'  : 40%,
+  'light'   : 10%,
+  'xlight'  : 20%,
+  'xxlight' : 40%
+) !default;
+
+
+
+
+
+//-------------------------------------
+// #SPLIT PALETTES
+//-------------------------------------
+
+$split-palettes:
+  map-merge(
+    map-merge($palette-base, $palette-default),$palette-events) !global;

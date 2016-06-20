@@ -1,0 +1,25 @@
+{
+  "name": "martha_medeiros",
+  "version": "1.0.0",
+  "description": "Martha Medeiros Theme",
+  "author": "Vinny Campos (Studio Lhama)",
+  "main": "gulpfile.js",
+  "moduleType": [
+    "node"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "source/vendor",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "^3.0.0",
+    "fancybox": "^2.1.5",
+    "owl.carousel": "^2.1.6",
+    "handlebars": "^4.0.5"
+  }
+}

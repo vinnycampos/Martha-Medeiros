@@ -1,0 +1,62 @@
+//-------------------------------------
+// #HEALTHCHECK
+//-------------------------------------
+
+//
+// We can run a visual healthcheck against our UI by using substring
+// selectors. We can target and then visualise the general makeup of a page
+// based on the types of class it contains.
+//
+// Of course this isn’t bulletproof—something might be both a Component and an
+// Element and a Responsive class—but if we write the classes in pretty
+// selective order (i.e. in the order of least to most important to know about,
+// hence Hacks coming last), we can begin to get a nice visual snapshot of the
+// makeup of any given page.
+//
+// Read more: http://csswizardry.com/2015/08/bemit-taking-the-bem-naming-convention-a-step-further#healthchecks
+//
+
+.s-healthcheck {
+  //
+  // Outline all classes.
+  //
+  // [class] { outline: 5px solid lightgrey; }
+
+  //
+  // Outline all BEM Elements.
+  //
+  // [class*="__"] { outline: 5px solid grey; }
+
+  //
+  // Outline all BEM Modifiers.
+  //
+  // [class*="--"] { outline: 5px solid darkgrey; }
+
+  //
+  // Outline all Object classes.
+  //
+  // [class^="o-"],
+  // [class*=" o-"] { outline: 5px solid orange; }
+
+  //
+  // Outline all Component classes.
+  //
+  // [class^="c-"],
+  // [class*=" c-"] { outline: 5px solid cyan; }
+
+  //
+  // Outline all Utility classes.
+  //
+  // [class^="u-"],
+  // [class*=" u-"] { outline: 5px solid violet; }
+
+  //
+  // Outline all Responsive classes.
+  //
+  // [class*="@"] { outline: 5px solid rosybrown; }
+
+  //
+  // Outline all Hack classes.
+  //
+  // [class^="_"] { outline: 5px solid red; }
+}

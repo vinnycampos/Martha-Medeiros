@@ -1,0 +1,63 @@
+//-------------------------------------
+// #BODY
+//-------------------------------------
+
+body {
+  @include u-font-family('sans');
+  @include u-font-weight('medium');
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+
+
+
+
+//-------------------------------------
+// #HEADERS
+//-------------------------------------
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  @include u-font-family('primary');
+  @include u-font-weight('bold');
+  color: palette('smoke', 'xxdark');
+}
+
+h1 { @include u-font-size('giant'); }
+h2 { @include u-font-size('big'); }
+h3 { @include u-font-size('huge'); }
+h4 { @include u-font-size('large'); }
+h5 { @include u-font-size('medium'); }
+h6 { @include u-font-size('regular'); }
+
+
+
+
+
+//-------------------------------------
+// #PARAGRAPH
+//-------------------------------------
+
+p {
+  @include u-font-size('regular');
+  margin: size('regular') 0;
+}
+
+
+
+
+
+//-------------------------------------
+// #LINKS
+//-------------------------------------
+
+a {
+  text-decoration: none;
+
+  &:hover { text-decoration: underline; }
+}

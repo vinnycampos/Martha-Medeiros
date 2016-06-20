@@ -1,0 +1,92 @@
+//-------------------------------------
+// #SIZES RANGE
+//-------------------------------------
+
+@function lower-bound($range) {
+  @if length($range) <= 0 {
+    @return 0;
+  }
+  @return nth($range, 1);
+}
+
+@function upper-bound($range) {
+  @if length($range) < 2 {
+    @return 999999999999;
+  }
+  @return nth($range, 2);
+}
+
+
+
+
+
+//-------------------------------------
+// #EM CALC
+//-------------------------------------
+
+@function strip-units($value) {
+  @return $value / ($value * 0 + 1);
+}
+
+@function em($target, $em-context: $base-size) {
+  @if not unitless($target) {
+    $target: strip-units($target);
+  }
+
+  @if not unitless($em-context) {
+    $em-context: strip-units($em-context);
+  }
+
+  @return $target / $em-context * 1em;
+}
+
+
+
+
+
+//-------------------------------------
+// #BASE SPACING
+//-------------------------------------
+
+@function size($size: regular, $em: false) {
+  $bs: ();
+
+  @if $em == 'em' {
+    $bs: em(map-get($base-spacing, $size));
+  } @else {
+    $bs: map-get($base-spacing, $size);
+  }
+  @return $bs;
+}
+
+
+
+
+
+//-------------------------------------
+// #COLOR PALETTE
+//-------------------------------------
+
+@function palette($key, $tone: base) {
+  $color: map-get($split-palettes, $key);
+  $amount: map-get($color-tone, $tone);
+  $palette: ();
+
+  @if $tone == 'base' {
+    $palette: (
+      $key: ('base': $color)
+    );
+  } @else {
+    $palette: (
+      $key: (
+        'dark': mix(black, $color, $amount),
+        'xdark': mix(black, $color, $amount),
+        'xxdark': mix(black, $color, $amount),
+        'light': mix(white, $color, $amount),
+        'xlight': mix(white, $color, $amount),
+        'xxlight': mix(white, $color, $amount)
+      )
+    );
+  }
+  @return map-get(map-get($palette, $key), $tone);
+}

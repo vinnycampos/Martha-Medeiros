@@ -1,0 +1,26 @@
+//-------------------------------------
+// #BUTTONS
+//-------------------------------------
+
+@mixin o-button($extend: false) {
+  @if $extend == extend {
+    @extend %o-button;
+  } @else {
+    @include u-font-size('regular');
+    @include u-font-weight('medium');
+    cursor: pointer;
+    display: inline-block;
+    font-family: inherit;
+    text-align: center;
+    margin-bottom: size('small');
+    margin-top: size('small');
+    padding: size('small') size('regular');
+    text-decoration: none !important;
+    white-space: nowrap;
+
+    & + & { margin-left: size('small'); }
+  }
+}
+
+%o-button,
+.o-button { @include o-button(); }

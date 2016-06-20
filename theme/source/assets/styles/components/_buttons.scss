@@ -1,0 +1,8 @@
+.c-button {
+  @include o-button;
+  background-color: palette('primary');
+  color: palette('white');
+  transition: $base-transition;
+
+  &:hover { background-color: palette('primary', 'dark'); }
+}

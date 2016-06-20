@@ -1,0 +1,188 @@
+//-------------------------------------
+// #FONT SIZE (by @csswizardry)
+//-------------------------------------
+
+@mixin u-font-size($size, $line-height: true) {
+  $fs: map-get($font-size, $size);
+
+  font-size: $fs;
+  font-size: em($fs);
+  @if $line-height == true {
+    line-height: ceil($fs / $base-line-height) * ($base-line-height / $fs);
+  }
+}
+
+
+
+@mixin u-font-weight($weight: medium) {
+  font-weight: map-get($font-weight, $weight);
+}
+
+
+
+@mixin u-font-family($family: primary) {
+  font-family: map-get($font-family, $family);
+}
+
+
+
+
+
+//-------------------------------------
+// #SIZING
+//-------------------------------------
+
+@mixin u-size($width, $height: $width) {
+  height: $height;
+  width: $width;
+}
+
+
+
+
+
+//-------------------------------------
+// #POSITIONING
+//-------------------------------------
+
+@mixin u-position($position, $args) {
+  position: $position;
+
+  @each $o in top right bottom left {
+    $i: index($args, $o);
+
+    @if $i and $i + 1 <= length($args) and type-of(nth($args, $i + 1)) == number  {
+      #{$o}: nth($args, $i + 1);
+    }
+  }
+}
+
+@mixin absolute($args) {
+  @include position(absolute, $args);
+}
+
+
+
+@mixin fixed($args) {
+  @include position(fixed, $args);
+}
+
+
+
+@mixin relative($args) {
+  @include position(relative, $args);
+}
+
+
+
+
+
+//-------------------------------------
+// #BORDER RADIUS
+//-------------------------------------
+
+@mixin u-border-radius($radius: $base-border-radius, $side: all) {
+  @if $side == 'top' {
+    border-top-right-radius: $radius;
+    border-top-left-radius: $radius;
+  } @else if $side == 'right' {
+    border-top-right-radius: $radius;
+    border-bottom-right-radius: $radius;
+  } @else if $side == 'bottom' {
+    border-bottom-right-radius: $radius;
+    border-bottom-left-radius: $radius;
+  } @else if $side == 'left' {
+    border-top-left-radius: $radius;
+    border-bottom-left-radius: $radius;
+  } @else if $side == 'top-right' {
+    border-top-right-radius: $radius;
+  } @else if $side == 'bottom-right' {
+    border-bottom-right-radius: $radius;
+  } @else if $side == 'bottom-left' {
+    border-bottom-left-radius: $radius;
+  } @else if $side == 'top-left' {
+    border-top-left-radius: $radius;
+  } @else if $side == 'all' {
+    border-radius: $radius;
+  } @else {
+    @warn 'Invalid border-radius `#{$side}`. Try: top, right, bottom, left, top-right, top-left, bottom-right, bottom-left or all.';
+  }
+}
+
+
+
+
+
+//-------------------------------------
+// #MEDIA QUERIES
+//-------------------------------------
+
+@mixin mq($break) {
+  @if $break == 'small' {
+    @media #{$small-up} { @content; }
+  } @else if $break == 'small only' {
+    @media #{$small-only} { @content; }
+  } @else if $break == 'medium' {
+    @media #{$medium-up} { @content; }
+  } @else if $break == 'medium only' {
+    @media #{$medium-only} { @content; }
+  } @else if $break == 'large' {
+    @media #{$large-up} { @content; }
+  } @else if $break == 'large only' {
+    @media #{$large-only} { @content; }
+  } @else if $break == 'wide' {
+    @media #{$xlarge-up} { @content; }
+  } @else if $break == 'wide only' {
+    @media #{$xlarge-only} { @content; }
+  } @else {
+    @warn 'Whoops! No value could be retrieved for `#{$break}`.';
+  }
+}
+
+
+
+
+
+//-------------------------------------
+// #HELPERS
+//-------------------------------------
+
+@mixin u-clearfix($extend: false) {
+  @if $extend == extend {
+    @extend %u-clearfix;
+  } @else {
+    &::before,
+    &::after {
+      content: ' ';
+      display: table;
+    }
+
+    &::after {
+      clear: both;
+    }
+  }
+}
+
+
+
+@mixin u-text-hidden($extend: false) {
+  @if $extend == extend {
+    @extend %u-hide-text;
+  } @else {
+    font: 0 / 0 a;
+    color: transparent;
+    text-shadow: none;
+  }
+}
+
+
+
+@mixin u-centered($extend: false) {
+  @if $extend == extend {
+    @extend %u-centered;
+  } @else {
+    float: none;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}

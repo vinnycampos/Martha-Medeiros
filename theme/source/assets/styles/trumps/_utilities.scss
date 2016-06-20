@@ -1,0 +1,53 @@
+//-------------------------------------
+// #HELPERS
+//-------------------------------------
+
+
+
+
+
+//
+// FLOATS
+//
+.u-pull-left { float: left; }
+.u-pull-right { float: right; }
+
+%u-centered,
+.u-centered { @include u-centered(); }
+
+
+
+
+
+//
+// TEXT
+//
+.u-text-left { text-align: left; }
+.u-text-center { text-align: center; }
+.u-text-right { text-align: right; }
+
+%u-text-shadow,
+.u-text-shadow { text-shadow: 0 1px 1px rgba(black, 0.4); }
+
+%u-text-hidden,
+.u-text-hidden { @include u-text-hidden(); }
+
+
+
+
+
+//
+// CLEARFIX
+//
+%u-clearfix,
+.u-clearfix { @include u-clearfix(); }
+
+
+
+
+
+//
+// BOX SHADOW
+//
+%u-box-shadow,
+.u-box-shadow { box-shadow: 0 1px 1px rgba(black, 0.4); }

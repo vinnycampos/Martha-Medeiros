@@ -1,0 +1,23 @@
+//-------------------------------------
+// #DEFAULTS
+//-------------------------------------
+
+$base-size        : 16px !default;
+$base-line-height : 24px !default;
+
+$base-spacing: (
+  'small'   : $base-line-height / 2,
+  'tiny'    : $base-line-height / 3,
+  'mini'    : $base-line-height / 4,
+  'regular' : $base-line-height,
+  'large'   : $base-line-height * 2,
+  'huge'    : $base-line-height * 3,
+  'big'     : $base-line-height * 4
+) !default;
+
+$base-transition  : all 0.3s ease 0s !global;
+
+$base-images-path : 'assets/img' !global;
+
+$fa-font-path     : 'assets/vendor/fonts';
+$open-sans-path   : 'assets/vendor/fonts';
