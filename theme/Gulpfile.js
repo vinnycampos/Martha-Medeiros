@@ -23,9 +23,6 @@ var config = {
   ,scriptsPath     : './source/assets/scripts'
   ,imagesPath      : './source/assets/images'
   ,templatePath    : './source/templates'
-  ,modelsPath      : './source/models'
-  ,viewsPath       : './source/views'
-  ,controllersPath : './source/controllers'
   ,vendorPath      : './source/vendor'
   ,pluginsPath     : './source/plugins/**/*'
   ,buildPath       : '../site/wp-content/themes/martha_medeiros'
@@ -61,7 +58,7 @@ gulp.task('bower', function() {
   return bower(config.vendorPath)
     .pipe($.size({title: 'Bower'}))
 });
- 
+
 /**
  * COMPILE STYLE
  */
@@ -102,40 +99,13 @@ gulp.task('csslint', function() {
  * PRETTIFY THEME FILES
  */
 gulp.task('theme', function() {
-  var template = gulp.src(config.templatePath + '/**/*.php')
+  return gulp.src(config.templatePath + '/**/*.php')
     .pipe($.prettify({
       indent_inner_html: true,
       indent_size: 2
     }))
     .pipe(gulp.dest(config.buildPath))
     .pipe($.size({title: 'Template'}));
-
-  var m = gulp.src(config.modelsPath + '/**/*.*')
-    .pipe($.prettify({
-      indent_inner_html: true,
-      indent_size: 2
-    }))
-    .pipe(gulp.dest(config.buildPath + '/models'))
-    .pipe($.size({title: 'Models'}));
-
-  var v = gulp.src(config.viewsPath + '/**/*.*')
-    .pipe($.prettify({
-      indent_inner_html: true,
-      indent_size: 2
-    }))
-    .pipe(gulp.dest(config.buildPath + '/views'))
-    .pipe($.size({title: 'Views'}));
-
-  var c = gulp.src(config.controllersPath + '/**/*.*')
-    .pipe($.prettify({
-      indent_inner_html: true,
-      indent_size: 2
-    }))
-    .pipe(gulp.dest(config.buildPath + '/controllers'))
-    .pipe($.size({title: 'Controllers'}))
-    .pipe(reload({stream: true}));
-
-  return merge(template, m, v, c);
 });
 
 
